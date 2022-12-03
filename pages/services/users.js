@@ -9,13 +9,19 @@ export const usersApi = createApi({
     getUsers: builder.query({
       query: () => "/users",
     }),
-    // getUser: builder.query({
-    //   query: (id) => `users/${id}`,
-    // }),
+    postUser: builder.mutation({
+      query: ({ name, post }) => ({
+        url: "/posts",
+        method: "POST",
+        body: post,
+      }),
+    }),
   }),
 });
 
-export const {
-  useGetUsersQuery,
-  // useGetUserQuery
-} = usersApi;
+export const { useGetUsersQuery, usePostUserMutation } = usersApi;
+
+// getUser: builder.query({
+//   query: (id) => `users/${id}`,
+// }),
+// useGetUserQuery,
